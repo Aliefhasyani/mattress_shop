@@ -11,11 +11,24 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if(Auth::user()->role == 'admin')
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('products.list')" :active="request()->routeIs('products.list')">
+                        {{ __('Product Management (ADMIN)') }}
+                    </x-nav-link>
+                </div>
+                @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
+                        {{ __('Products') }}
+                    </x-nav-link>
+                </div>
+              
             </div>
 
             <!-- Settings Dropdown -->

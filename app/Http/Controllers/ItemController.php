@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     public function getAll(){
-        $mattress = Mattress::with('company')->get();
+        $mattress = Mattress::all();
 
         return view('products_list',compact('mattress'));
     }
