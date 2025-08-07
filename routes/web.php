@@ -23,6 +23,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard/admin',[AdminController::class,'index'])->middleware(['auth','role:admin'])->name('admin.dashboard');
 Route::get('/dashboard/seller',[SellerController::class,'index'])->middleware(['auth','role:seller'])->name('seller.dashboard');
 
-Route::get('/products',[ItemController::class,'getAll'])->name('products.list');
+Route::get('/products',[ItemController::class,'getAll'])->middleware(['auth','role:admin'])->name('products.list');
 
 require __DIR__.'/auth.php';
