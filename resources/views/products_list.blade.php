@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <!-- Product Grid -->
+  
     @if($mattress->isEmpty())
       <div class="empty-state">
         <i class="fas fa-bed fa-4x text-muted mb-4"></i>
@@ -102,7 +102,7 @@
                   <i class="fas fa-building me-1"></i> {{ $value->company->name }}
                 </span>
                 <h5 class="card-title mb-2">{{ $value->name }}</h5>
-                <p class="card-text text-muted mb-3">{{ Str::limit($value->desc, 80) }}</p>
+                <p class="card-text text-muted mb-3">{{$value->desc }}</p>
                 
                 <div class="mt-auto">
                   <div class="d-flex justify-content-between align-items-center mb-3">

@@ -24,6 +24,7 @@ Route::get('/dashboard/admin',[AdminController::class,'index'])->middleware(['au
 Route::get('/dashboard/seller',[SellerController::class,'index'])->middleware(['auth','role:seller'])->name('seller.dashboard');
 
 Route::get('/admin/products',[AdminController::class,'getAllProducts'])->middleware(['auth','role:admin'])->name('products.list');
+Route::get('/admin/companies',[AdminController::class,'getAllCompanies'])->middleware(['auth','role:admin'])->name('companies.list');
 
 Route::get('/products',[ItemController::class,'getAll'])->name('products');
 Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product');
