@@ -26,5 +26,6 @@ Route::get('/dashboard/seller',[SellerController::class,'index'])->middleware(['
 Route::get('/admin/products',[AdminController::class,'getAllProducts'])->middleware(['auth','role:admin'])->name('products.list');
 
 Route::get('/products',[ItemController::class,'getAll'])->name('products');
+Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product');
 
 require __DIR__.'/auth.php';

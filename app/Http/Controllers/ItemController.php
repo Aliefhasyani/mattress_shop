@@ -12,4 +12,10 @@ class ItemController extends Controller
 
         return view('products_list',compact('mattress'));
     }
+
+    public function show($id){
+        $mattress = Mattress::with('company')->findOrFail($id);
+
+        return view('mattress_detail',compact('mattress'));
+    }
 }

@@ -16,6 +16,7 @@ class MattressImageSeeder extends Seeder
         $imageFiles = [
             'mattresses/mattress1.jpg',
             'mattresses/mattress2.jpg',
+            'mattresses/mattress3.jpg',
         ];
 
         $mattresses = Mattress::all();
