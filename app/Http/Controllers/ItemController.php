@@ -45,5 +45,12 @@ class ItemController extends Controller
         return redirect()->route('products.list')->with('success', 'Mattress created successfully.');
     }
 
+    public function home(){
+        $offers = Mattress::where('price' , '<' , 10000)->limit(3)->get();
+
+        return view('home',compact('offers'));
+
+    }
+
 
 }

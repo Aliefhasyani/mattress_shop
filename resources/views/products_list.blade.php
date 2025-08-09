@@ -3,53 +3,78 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4a69bd;
-            --secondary-color: #6c757d;
-            --light-bg: #f5f7fa;
-            --dark-text: #212529;
-            --green-success: #28a745;
-            --red-danger: #dc3545;
+            --primary-color: #4361ee;
+            --primary-light: #e6f0ff;
+            --secondary-color: #64748b;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-bg);
             color: var(--dark-text);
+            line-height: 1.6;
         }
 
         .hero-section {
-            background: linear-gradient(45deg, #ffffff 0%, var(--light-bg) 100%);
-            border-radius: 1rem;
-            padding: 4rem 2.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 16px;
+            padding: 4rem 2rem;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(67,97,238,0.1) 0%, rgba(67,97,238,0) 70%);
+            border-radius: 50%;
         }
 
         .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e9ecef;
-            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             overflow: hidden;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            background: white;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-light);
+        }
+
+        .product-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 240px;
         }
 
         .product-img {
-            height: 250px;
-            object-fit: cover;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.03);
         }
 
         .card-body {
@@ -60,138 +85,208 @@
         }
 
         .price-tag {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0;
         }
 
         .company-badge {
-            background-color: #e6f0ff;
+            background-color: var(--primary-light);
             color: var(--primary-color);
-            padding: 0.4em 0.8em;
+            padding: 0.35em 0.8em;
             font-weight: 600;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: inline-block;
             margin-bottom: 0.75rem;
+            align-self: flex-start;
         }
 
-        .btn-details,
         .btn-buy {
             font-weight: 600;
-            border-radius: 50px;
-            padding: 0.65rem 1.5rem;
-        }
-
-        .btn-buy {
-            background-color: var(--green-success);
-            border-color: var(--green-success);
+            border-radius: 10px;
+            padding: 0.65rem 1.25rem;
+            background-color: var(--success-color);
+            border-color: var(--success-color);
             color: white;
+            transition: all 0.2s ease;
         }
 
         .btn-buy:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
+            background-color: #0e9f6e;
+            border-color: #0d9567;
+            transform: translateY(-1px);
         }
 
         .btn-details {
-            border-color: #e9ecef;
-            color: var(--secondary-color);
+            font-weight: 500;
+            border-radius: 10px;
+            padding: 0.65rem 1.25rem;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            color: var(--primary-color);
+            transition: all 0.2s ease;
         }
 
         .btn-details:hover {
-            background-color: #f8f9fa;
-            border-color: #dee2e6;
+            background-color: var(--primary-light);
+            border-color: var(--primary-color);
         }
 
         .empty-state {
-            padding: 5rem;
+            padding: 4rem 2rem;
             text-align: center;
-            background-color: #ffffff;
-            border-radius: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9ecef;
+            background-color: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .badge-stock {
+        .stock-badge {
             font-size: 0.8rem;
             padding: 0.35em 0.75em;
             border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .in-stock {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+        }
+
+        .out-of-stock {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger-color);
+        }
+
+        .hero-title {
+            font-weight: 700;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .filter-btn {
+            border-radius: 10px;
+            padding: 0.65rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .card-text {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .placeholder-icon {
+            color: #e2e8f0;
         }
     </style>
 </head>
 
 <x-app-layout>
-    <body class="bg-light">
-        <div class="container py-5">
-            <div class="hero-section">
-                <h1 class="display-5 fw-bold mb-3">Premium Mattress Collection</h1>
-                <p class="lead text-secondary mb-4">Discover the perfect blend of comfort and support for your best night's sleep.</p>
-                <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <button class="btn btn-primary px-4">
-                        <i class="fas fa-star me-2"></i> Featured Products
-                    </button>
-                    <button class="btn btn-outline-secondary px-4">
-                        <i class="fas fa-filter me-2"></i> Filter Options
-                    </button>
-                </div>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="hero-title">Premium Mattress Collection</h1>
+            <p class="hero-subtitle">Experience unparalleled comfort with our handcrafted mattresses designed for your perfect night's sleep</p>
+            <div class="d-flex justify-content-center flex-wrap gap-2">
+                <button class="btn btn-primary filter-btn">
+                    <i class="fas fa-star me-2"></i> Featured
+                </button>
+                <button class="btn btn-outline-secondary filter-btn">
+                    <i class="fas fa-filter me-2"></i> Filters
+                </button>
+                <button class="btn btn-outline-secondary filter-btn">
+                    <i class="fas fa-sort me-2"></i> Sort
+                </button>
             </div>
+        </div>
 
-            @if($mattress->isEmpty())
-                <div class="empty-state">
-                    <i class="fas fa-bed fa-5x text-muted mb-4"></i>
-                    <h3 class="mb-3 fw-bold">No Mattresses Available</h3>
-                    <p class="text-muted mb-4">We're currently updating our inventory. Please check back later.</p>
-                    <a href="#" class="btn btn-primary px-4">
-                        <i class="fas fa-envelope me-2"></i> Notify Me When Available
-                    </a>
+        <!-- Product Grid -->
+        @if($mattress->isEmpty())
+            <div class="empty-state">
+                <div class="mb-4">
+                    <i class="fas fa-bed fa-4x text-muted mb-3"></i>
+                    <h3 class="fw-bold mb-2">No Mattresses Available</h3>
+                    <p class="text-muted">We're currently preparing our new collection. Please check back soon.</p>
                 </div>
-            @else
-                <div class="row g-4">
-                    @foreach($mattress as $value)
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 product-card">
-                                <div class="position-relative">
-                                    <img src="{{ asset('storage/' . $value->image_path) }}" class="product-img" alt="{{ $value->name }}">
-                                    @if($value->quantity_in_stock <= 0)
-                                        <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2">Out of Stock</span>
-                                    @endif
-                                </div>
-                                <div class="card-body">
-                                    <span class="company-badge">
-                                        <i class="fas fa-building me-1"></i> {{ $value->company->name }}
+                <a href="#" class="btn btn-primary px-4">
+                    <i class="fas fa-envelope me-2"></i> Notify Me When Available
+                </a>
+            </div>
+        @else
+            <div class="row g-4">
+                @foreach($mattress as $value)
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card product-card">
+                            <div class="product-img-container">
+                                @if ($value->image_path)
+                                    <img src="{{ asset('storage/' . $value->image_path) }}" 
+                                         class="product-img" 
+                                         alt="{{ $value->name }}">
+                                @else
+                                    <div class="h-100 d-flex align-items-center justify-content-center bg-light">
+                                        <i class="fas fa-bed fa-4x placeholder-icon"></i>
+                                    </div>
+                                @endif
+                                
+                                @if($value->quantity_in_stock <= 0)
+                                    <span class="stock-badge out-of-stock position-absolute top-3 start-3">
+                                        <i class="fas fa-times-circle me-1"></i> Out of Stock
                                     </span>
-                                    <h5 class="card-title fw-bold mb-2">{{ $value->name }}</h5>
-                                    <p class="card-text text-muted mb-3 flex-grow-1">{{ $value->desc }}</p>
+                                @endif
+                            </div>
+                            <div class="card-body">
+                                <span class="company-badge">
+                                    <i class="fas fa-building me-1"></i> {{ $value->company->name }}
+                                </span>
+                                <h5 class="card-title">{{ $value->name }}</h5>
+                                <p class="card-text">{{ Str::limit($value->desc, 100) }}</p>
+                                
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="price-tag">${{ number_format($value->price, 2) }}</span>
+                                        @if($value->quantity_in_stock > 0)
+                                            <span class="stock-badge in-stock">
+                                                <i class="fas fa-check-circle me-1"></i> In Stock
+                                            </span>
+                                        @endif
+                                    </div>
 
-                                    <div class="mt-auto">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <span class="price-tag">${{ number_format($value->price, 2) }}</span>
-                                            @if($value->quantity_in_stock > 0)
-                                                <span class="badge bg-success bg-opacity-10 text-success badge-stock">
-                                                    <i class="fas fa-check-circle me-1"></i> In Stock
-                                                </span>
-                                            @endif
-                                        </div>
-
-                                        <div class="d-grid gap-2">
-                                            @if($value->quantity_in_stock > 0)
-                                                <a href="#" class="btn btn-buy">
-                                                    <i class="fas fa-shopping-cart me-2"></i> Add to Cart
-                                                </a>
-                                            @endif
-                                            <a href="{{ route('show.product', $value->id) }}" class="btn btn-outline-primary btn-details">
-                                                <i class="fas fa-info-circle me-2"></i> View Details
+                                    <div class="d-grid gap-2">
+                                        @if($value->quantity_in_stock > 0)
+                                            <a href="#" class="btn btn-buy">
+                                                <i class="fas fa-shopping-cart me-2"></i> Add to Cart
                                             </a>
-                                        </div>
+                                        @endif
+                                        <a href="{{ route('show.product', $value->id) }}" class="btn btn-details">
+                                            <i class="fas fa-info-circle me-2"></i> Details
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </body>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
 </x-app-layout>
