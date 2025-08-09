@@ -29,4 +29,7 @@ Route::get('/admin/companies',[AdminController::class,'getAllCompanies'])->middl
 Route::get('/products',[ItemController::class,'getAll'])->name('products');
 Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product');
 
+Route::get('/admin/create/product',[ItemController::class,'create'])->middleware(['auth','role:admin'])->name('product.create');
+Route::post('/admin/store/product',[ItemController::class,'store'])->middleware(['auth','role:admin'])->name('product.store');
+
 require __DIR__.'/auth.php';

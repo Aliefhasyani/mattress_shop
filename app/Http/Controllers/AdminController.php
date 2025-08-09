@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
 
     public function getAllCompanies(){
-        $companies = Company::all();
+        $companies = Company::withCount('mattress')->get();
 
         return view('admin.company_list',compact('companies'));
     }
