@@ -13,6 +13,24 @@
                 <!-- Navigation Links -->
                 @if(Auth::check() && Auth::user()->role === 'admin')
                     {{-- admin --}}
+                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('products.list')" :active="request()->routeIs('products.list')">
+                            {{ __('Product Management (ADMIN)') }}
+                        </x-nav-link>
+                    </div>
+                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('companies.list')" :active="request()->routeIs('companies.list')">
+                            {{ __('Company Management (ADMIN)') }}
+                        </x-nav-link>
+                    </div> --}}
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Admin Dashboard (ADMIN)') }}
+                        </x-nav-link>
+                    </div>
+                    
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
                             {{ __('Products') }}
@@ -25,17 +43,6 @@
                         </x-nav-link>
                     </div>
                     
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('products.list')" :active="request()->routeIs('products.list')">
-                            {{ __('Product Management (ADMIN)') }}
-                        </x-nav-link>
-                    </div>
-
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            {{ __('Admin Dashboard (ADMIN)') }}
-                        </x-nav-link>
-                    </div>
 
 
                 @elseif(Auth::check())
@@ -90,6 +97,7 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @if(Auth::check())
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -104,6 +112,14 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                        @else
+                         <x-dropdown-link :href="route('register')">
+                            {{ __('Register') }}
+                        </x-dropdown-link>
+                         <x-dropdown-link :href="route('login')">
+                            {{ __('Log in') }}
+                        </x-dropdown-link>
+                        @endif
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -147,7 +163,7 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
+                   
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">

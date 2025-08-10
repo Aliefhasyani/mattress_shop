@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellerController;
@@ -34,4 +35,6 @@ Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product'
 Route::get('/admin/create/product',[ItemController::class,'create'])->middleware(['auth','role:admin'])->name('product.create');
 Route::post('/admin/store/product',[ItemController::class,'store'])->middleware(['auth','role:admin'])->name('product.store');
 
+Route::get('/admin/create/company',[CompanyController::class,'create'])->middleware(['auth','role:admin'])->name('company.create');
+Route::post('/admin/stroe/company',[CompanyController::class,'store'])->middleware(['auth','role:admin'])->name('company.store');
 require __DIR__.'/auth.php';

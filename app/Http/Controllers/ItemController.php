@@ -46,7 +46,7 @@ class ItemController extends Controller
     }
 
     public function home(){
-        $offers = Mattress::where('price' , '<' , 10000)->limit(3)->get();
+        $offers = Mattress::where('price' , '<' , 10000)->limit(4)->get();
 
         return view('home',compact('offers'));
 

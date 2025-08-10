@@ -115,7 +115,7 @@
         <div class="header-section text-center">
             <h1 class="fw-bold mb-2">Registered Companies</h1>
             <p class="lead text-muted mb-4">Manage your network of business partners and manufacturers</p>
-            <a href="#" class="btn btn-primary btn-action">
+            <a href="{{route('company.create')}}" class="btn btn-primary btn-action">
                 <i class="fas fa-plus me-2"></i> Add New Company
             </a>
         </div>
@@ -175,7 +175,7 @@
                                     </td>
                                     <td class="text-center">
                                         <span class="mattress-count">
-                                            {{ $value->mattress_count }}
+                                            {{ $value->count }}
                                         </span>
                                     </td>
                                     <td class="text-end pe-4 table-actions">

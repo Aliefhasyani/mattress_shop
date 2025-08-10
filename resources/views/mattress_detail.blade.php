@@ -1,238 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $mattress->name }} - Product Details</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
+        /* --- Color Variables (Brown Theme) --- */
         :root {
-            --primary-color: #4361ee;
-            --primary-light: #e6f0ff;
-            --secondary-color: #64748b;
-            --light-bg: #f8fafc;
-            --dark-text: #1e293b;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --border-color: #e2e8f0;
+            --primary-color: #5a3d2b;
+            --primary-light: #d2b48c;
+            --secondary-color: #8b7355;
+            --accent-color: #c97d4a;
+            --light-bg: rgba(255, 255, 255, 0.85);
+            --dark-text: #3b2a1a;
+            --success-color: #8f6e46;
+            --danger-color: #a64b2a;
+            --border-color: #e2c9a4;
+            --gold: #d4a373;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
+            font-family: 'Inter', sans-serif;
             color: var(--dark-text);
             line-height: 1.6;
+            background: linear-gradient(rgba(84, 56, 39, 0.9), rgba(84, 56, 39, 0.8)),
+                        url('https://images.unsplash.com/photo-1562549379-97048934a6c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJlZHJvb218ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .product-card {
-            border: none;
-            border-radius: 1.5rem;
+        .container {
+            max-width: 1400px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Product Card --- */
+        .product-card-lg {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             overflow: hidden;
-            background-color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: var(--light-bg);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .product-card-lg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .product-img-container {
+        /* --- Product Image --- */
+        .product-img-container-lg {
             position: relative;
-            height: 500px;
+            height: 600px;
             overflow: hidden;
+            background-color: #f0e4d7;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
         }
-
-        .product-img {
-            height: 100%;
+        .product-img-lg {
             width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
+        }
+        .product-card-lg:hover .product-img-lg {
+            transform: scale(1.05);
         }
 
-        .product-img-container:hover .product-img {
-            transform: scale(1.02);
+        /* --- Product Details --- */
+        .product-details-lg {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-
-        .price-tag {
-            font-size: 2rem;
+        .product-title {
             font-weight: 700;
+            font-size: 3rem;
+            line-height: 1.1;
             color: var(--primary-color);
-            margin-bottom: 0;
         }
-
         .company-badge {
             background-color: var(--primary-light);
             color: var(--primary-color);
-            padding: 0.5em 1em;
+            padding: 0.5em 1.2em;
             font-weight: 600;
-            border-radius: 50px;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
             display: inline-block;
-            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
+        /* --- Price, Description, Ratings --- */
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+        }
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
         .description-box {
-            background-color: var(--light-bg);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin: 2rem 0;
+            background-color: #fff8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
             border: 1px solid var(--border-color);
         }
-
-        .btn-cta {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border-radius: 12px;
-            padding: 1rem 2rem;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-add-to-cart {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-add-to-cart:hover {
-            background-color: #3a56cd;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
-        }
-
-        .btn-buy-now {
-            background-color: var(--success-color);
-            border-color: var(--success-color);
-            color: white;
-        }
-
-        .btn-buy-now:hover {
-            background-color: #0e9f6e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .feature-icon {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-item {
-            padding: 1.5rem;
-            text-align: center;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .feature-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-            color: var(--dark-text);
-        }
-
-        .feature-desc {
-            font-size: 0.85rem;
-            color: var(--secondary-color);
-            margin-bottom: 0;
-        }
-
-        .product-title {
-            font-weight: 700;
-            font-size: 2rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .section-label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .placeholder-icon {
-            color: #e2e8f0;
-        }
-
         .rating-badge {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning-color);
-            padding: 0.35em 0.75em;
+            background-color: rgba(212, 163, 115, 0.15);
+            color: var(--gold);
+            padding: 0.35em 0.8em;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
         }
-
         .rating-badge i {
             margin-right: 0.25em;
+        }
+
+        /* --- Features --- */
+        .feature-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .feature-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+        .feature-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--dark-text);
+        }
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 0;
+        }
+
+        /* --- Buttons --- */
+        .btn-cta {
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+        .btn-add-to-cart {
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            color: white;
+        }
+        .btn-add-to-cart:hover {
+            background-color: #3e2a1d;
+            border-color: #3e2a1d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 61, 43, 0.3);
+        }
+        .btn-buy-now {
+            background-color: var(--success-color);
+            border: 2px solid var(--success-color);
+            color: white;
+        }
+        .btn-buy-now:hover {
+            background-color: #6f5138;
+            border-color: #6f5138;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(143, 110, 70, 0.3);
+        }
+
+        /* --- Placeholder --- */
+        .placeholder-icon {
+            color: #dcdcdc;
         }
     </style>
 </head>
 
+<body>
 <x-app-layout>
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="card product-card">
+                <div class="card product-card-lg">
                     <div class="row g-0">
-                        <!-- Product Image Column -->
+                        <!-- Product Image -->
                         <div class="col-md-6">
                             @if ($mattress->image_path)
-                                <div class="product-img-container">
-                                    <img 
-                                        src="{{ asset('storage/' . $mattress->image_path) }}" 
-                                        alt="{{ $mattress->name }}" 
-                                        class="product-img"
-                                    >
+                                <div class="product-img-container-lg">
+                                    <img src="{{ asset('storage/' . $mattress->image_path) }}" alt="{{ $mattress->name }}" class="product-img-lg">
                                 </div>
                             @else
-                                <div class="product-img-container d-flex align-items-center justify-content-center bg-light">
-                                    <div class="text-center p-4">
-                                        <i class="fas fa-bed fa-5x placeholder-icon mb-3"></i>
-                                        <p class="text-muted">No image available</p>
+                                <div class="product-img-container-lg d-flex align-items-center justify-content-center">
+                                    <div class="text-center p-5">
+                                        <i class="fas fa-bed fa-6x placeholder-icon mb-4"></i>
+                                        <p class="text-muted">Image not available</p>
                                     </div>
                                 </div>
                             @endif
                         </div>
-                        
-                        <!-- Product Info Column -->
+
+                        <!-- Product Details -->
                         <div class="col-md-6">
-                            <div class="card-body p-4 p-lg-5">
-                                <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div class="product-details-lg">
+                                <div class="d-flex justify-content-between mb-3">
                                     <div>
                                         <span class="company-badge">
                                             <i class="fas fa-building me-1"></i> {{ $mattress->company->name }}
                                         </span>
-                                        <h1 class="product-title">{{ $mattress->name }}</h1>
+                                        <h1 class="product-title mt-2">{{ $mattress->name }}</h1>
                                         <div class="rating-badge mb-3">
                                             <i class="fas fa-star"></i> 4.8 (256 reviews)
                                         </div>
                                     </div>
-                                    <div class="text-end">
-                                        <span class="section-label">Price</span>
-                                        <div class="price-tag">${{ number_format($mattress->price, 2) }}</div>
-                                    </div>
                                 </div>
-                                
-                                <!-- Description Box -->
-                                <div class="description-box">
+
+                                <!-- Description -->
+                                <div class="description-box mb-4">
                                     <span class="section-label">Product Description</span>
-                                    <p class="mb-0">{{ $mattress->desc }}</p>
+                                    <p class="mb-0 text-muted">{{ $mattress->desc }}</p>
                                 </div>
-                                
-                                <!-- Features Grid -->
-                                <div class="row g-3 my-4">
+
+                                <!-- Features -->
+                                <div class="row g-3 mb-4">
                                     <div class="col-4">
                                         <div class="feature-item">
                                             <i class="fas fa-truck feature-icon"></i>
@@ -256,20 +279,25 @@
                                     </div>
                                 </div>
 
-                                <!-- Call-to-Action Buttons -->
-                                <div class="d-grid gap-3 mt-4">
+                                <!-- Buttons -->
+                                <div class="d-grid gap-3">
                                     <a href="#" class="btn btn-cta btn-add-to-cart">
-                                        <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
                                     <a href="#" class="btn btn-cta btn-buy-now">
-                                        <i class="fas fa-credit-card me-2"></i> Buy Now
+                                        <i class="fas fa-credit-card"></i> Buy Now
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
