@@ -6,12 +6,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --primary-light: #e6f0ff;
-            --secondary-color: #64748b;
-            --light-bg: #f8fafc;
-            --dark-text: #1e293b;
-            --border-color: #e2e8f0;
+            --primary-color: #8B4513; /* SaddleBrown */
+            --primary-light: #f3e6dc;
+            --secondary-color: #7a6655;
+            --light-bg: #f8f5f2;
+            --dark-text: #2f1b12;
+            --border-color: #e2d5c6;
             --success-color: #10b981;
             --error-color: #ef4444;
         }
@@ -82,7 +82,7 @@
 
         .form-input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
             outline: none;
         }
 
@@ -115,9 +115,9 @@
         }
 
         .btn-primary:hover {
-            background-color: #3a56cd;
+            background-color: #6e3610;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
         }
 
         .remember-forgot {

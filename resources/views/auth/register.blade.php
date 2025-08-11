@@ -6,12 +6,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --primary-light: #e6f0ff;
-            --secondary-color: #64748b;
-            --light-bg: #f8fafc;
-            --dark-text: #1e293b;
-            --border-color: #e2e8f0;
+            --primary-color: #8B5E3C;       /* Main brown */
+            --primary-light: #f3e9e1;       /* Soft beige highlight */
+            --secondary-color: #7b6f66;     /* Warm muted gray */
+            --light-bg: #faf6f3;             /* Page background */
+            --dark-text: #2e1f14;            /* Dark brown text */
+            --border-color: #e0d6cc;         /* Light beige border */
             --success-color: #10b981;
             --error-color: #ef4444;
         }
@@ -82,7 +82,7 @@
 
         .form-input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
             outline: none;
         }
 
@@ -115,9 +115,9 @@
         }
 
         .btn-primary:hover {
-            background-color: #3a56cd;
+            background-color: #75492b; /* Darker brown */
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 5px 15px rgba(139, 94, 60, 0.2);
         }
 
         .auth-footer {
@@ -164,6 +164,7 @@
         }
     </style>
 </head>
+    
 
 <body>
     <div class="d-flex align-items-center min-vh-100 py-5">
@@ -211,7 +212,7 @@
                             id="email" 
                             type="email" 
                             name="email" 
-                            class="form-input" 
+                            class="form-input mb-3" 
                             placeholder="Your email address"
                             value="{{ old('email') }}" 
                             required 
@@ -220,6 +221,8 @@
                         @if($errors->has('email'))
                             <div class="error-message">{{ $errors->first('email') }}</div>
                         @endif
+
+
        
                     <div class="form-group">
                         <i class="fas fa-lock input-icon"></i>

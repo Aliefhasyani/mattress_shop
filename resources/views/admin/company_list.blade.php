@@ -7,9 +7,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
         <style>
             :root {
-                --primary-color: #4a69bd;
+                --primary-color: #8B5E3C; /* Warm brown */
+                --primary-hover: #704830;
                 --secondary-color: #6c757d;
-                --light-bg: #f5f7fa;
+                --light-bg: #f5f3f1; /* soft beige background */
                 --dark-text: #212529;
             }
 
@@ -24,7 +25,7 @@
             }
 
             .header-section {
-                background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+                background: linear-gradient(135deg, #ffffff 0%, #f2ede9 100%);
                 border-radius: 1rem;
                 padding: 2.5rem 2rem;
                 margin-bottom: 3rem;
@@ -53,7 +54,7 @@
             }
             
             .table-hover tbody tr:hover {
-                background-color: rgba(74, 105, 189, 0.05);
+                background-color: rgba(139, 94, 60, 0.08);
             }
             
             .table-actions .btn-group {
@@ -74,18 +75,18 @@
             }
             
             .company-size.small {
-                background-color: #e6f0ff;
-                color: #1864ab;
+                background-color: #f3e6da;
+                color: var(--primary-color);
             }
             
             .company-size.medium {
-                background-color: #fff3bf;
-                color: #e67700;
+                background-color: #f6ebd4;
+                color: #a8692e;
             }
             
             .company-size.large {
-                background-color: #ebfbee;
-                color: #2b8a3e;
+                background-color: #e9e0d6;
+                color: #5d3c27;
             }
             
             .empty-state {
@@ -99,7 +100,7 @@
             
             .empty-state i {
                 font-size: 4rem;
-                color: #ced4da;
+                color: #d3b49f;
                 margin-bottom: 1.5rem;
             }
             
@@ -107,6 +108,13 @@
                 border-radius: 50px;
                 padding: 0.5rem 1.5rem;
                 font-weight: 600;
+                background-color: var(--primary-color);
+                border: none;
+                color: #fff;
+            }
+            .btn-action:hover {
+                background-color: var(--primary-hover);
+                color: #fff;
             }
         </style>
     </head>
@@ -115,7 +123,7 @@
         <div class="header-section text-center">
             <h1 class="fw-bold mb-2">Registered Companies</h1>
             <p class="lead text-muted mb-4">Manage your network of business partners and manufacturers</p>
-            <a href="{{route('company.create')}}" class="btn btn-primary btn-action">
+            <a href="{{route('company.create')}}" class="btn btn-action">
                 <i class="fas fa-plus me-2"></i> Add New Company
             </a>
         </div>
@@ -128,7 +136,7 @@
                             <i class="fas fa-building"></i>
                             <h4 class="mb-3 fw-bold">No Companies Found</h4>
                             <p class="text-muted mb-4">There are currently no companies registered in the system.</p>
-                            <a href="#" class="btn btn-primary btn-action">
+                            <a href="{{route('company.create')}}" class="btn btn-action">
                                 <i class="fas fa-plus me-2"></i> Register First Company
                             </a>
                         </div>
@@ -180,7 +188,7 @@
                                     </td>
                                     <td class="text-end pe-4 table-actions">
                                         <div class="btn-group" role="group">
-                                            <button class="btn btn-sm btn-outline-primary">
+                                            <button class="btn btn-sm btn-outline-primary" style="border-color: var(--primary-color); color: var(--primary-color);">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                             <button class="btn btn-sm btn-outline-secondary">

@@ -21,6 +21,12 @@ class AdminController extends Controller
         return view('admin.products_list',compact('mattress'));
     }
 
+    public function show($id){
+        $mattress = Mattress::with('company')->findOrFail($id);
+
+         return view('mattress_detail',compact('mattress'));
+    }
+
     public function getAllCompanies(){
         $companies = Company::withCount('mattress as count')->get();
 

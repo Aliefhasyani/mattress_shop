@@ -64,49 +64,63 @@
     <div class="container py-5">
         <div class="card form-card">
             <div class="card-header bg-white border-0 text-center pb-0">
-                <h2 class="h3 fw-bold mb-1">Company Register    </h2>
-                <p class="text-muted mb-4">Fill out the form below to register your company</p>
+                <h2 class="h3 fw-bold mb-1">EditProduct</h2>
+                <p class="text-muted mb-4">Fill out the form below to edit your product</p>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{route('company.store')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('product.update',$mattress->id)}}" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Company Name</label>
-                        <input id="name" name="name" type="text" class="form-control" placeholder="PT. Company" required>
+                        <label for="name" class="form-label">Product Name</label>
+                        <input id="name" name="name" type="text" class="form-control" placeholder="e.g., The Cloud Comfort Mattress" required value="{{old('name',$mattress->name)}}">
                     </div>
 
                     <div class="row">
-                        <div class="col mb-3">
-                            <label for="company_email" class="form-label">Company Email</label>
-                            <input id="company_email" name="company_email" type="email" class="form-control" placeholder="company@gmail.com" required>
+                        <div class="col-md-6 mb-3">
+                            <label for="quantity" class="form-label">Quantity in Stock</label>
+                            <input id="quantity" name="quantity_in_stock" type="number" class="form-control" placeholder="e.g., 50" required  value="{{old('quantity_in_stock',$mattress->quantity_in_stock)}}">
                         </div>
-                       
+                        <div class="col-md-6 mb-3">
+                            <label for="price" class="form-label">Unit Price</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input id="price" name="price" type="number" step="0.01" class="form-control" placeholder="e.g., 999.99" required  value="{{old('price',$mattress->price)}}"> 
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="company_phone_number" class="form-label">Company Phone Number</label>
-                        <input id="company_phone_number" name="company_phone_number" type="text" class="form-control">
+                        <label for="image_path" class="form-label">Product Image</label>
+                        <input id="image_path" name="image_path" type="file" class="form-control" >
+                        <small class="form-text text-muted">You can leave this field empty if no image is available.</small>
                     </div>
 
-                
-
-                    <div class="mb-4">
-                        <label for="size" class="form-label">Company Size</label>
-                        <select  name="size" class="form-select" aria-label="Select company size">
-                            <option>Startup</option>
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Big</option>
-                        </select>
-                       
+                    <div class="mb-3">
+                        <label for="desc" class="form-label">Product Description</label>
+                        <textarea id="desc" name="desc" class="form-control" rows="3" placeholder="A brief description of the product..." >{{old('desc',$mattress->desc)}}</textarea>
                     </div>
+
+                <div class="mb-4">
+                    <label for="company_id" class="form-label">Manufacturer</label>
+                    <select id="company_id" name="company_id" class="form-select" aria-label="Select a company">
+                        @foreach($company as $value)
+                            <option value="{{ $value->id }}"
+                                {{ old('company_id', $mattress->company_id) == $value->id ? 'selected' : '' }}>
+                                {{ $value->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+
 
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{ url()->previous() }}" class="btn btn-secondary">
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-2"></i> Save 
+                            <i class="fas fa-save me-2"></i> Edit Product
                         </button>
                     </div>
                 </form>
