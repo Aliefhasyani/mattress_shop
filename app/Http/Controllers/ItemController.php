@@ -92,7 +92,8 @@ class ItemController extends Controller
 
         return redirect()->route('products.list');
 
-    }   
+    }
+       
 
 
 

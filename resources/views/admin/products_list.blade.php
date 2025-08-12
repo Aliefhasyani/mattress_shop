@@ -224,17 +224,13 @@
                                             <form method="POST" action="{{route('delete.product',$value->id)}}">
                                                 @method('DELETE')
                                                 @csrf
-                                                    <button class="btn btn-sm btn-outline-danger">
-                                                        <a href="{{route('delete.product',$value->id)}}">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </button>
+                                                <button  class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </form>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <a href="{{route('product.edit',$value->id)}}">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                            </button>
+                                            <a href="{{route('product.edit',$value->id)}}" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -247,3 +243,6 @@
         </div>
     </div>
 </x-app-layout>
+                                                  
+
+                                         

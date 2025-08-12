@@ -30,7 +30,7 @@ Route::get('/dashboard/seller',[SellerController::class,'index'])->middleware(['
 Route::get('/admin/products',[AdminController::class,'getAllProducts'])->middleware(['auth','role:admin'])->name('products.list');
 Route::get('/admin/products/show/{id}',[AdminController::class,'show'])->middleware(['auth','role:admin'])->name('admin.product');
 Route::delete('/admin/products/delete/{id}',[ItemController::class,'destroy'])->middleware(['auth','role:admin'])->name('delete.product');
-Route::get('/admin/companies',[AdminController::class,'getAllCompanies'])->middleware(['auth','role:admin'])->name('companies.list');
+
 
 Route::get('/products',[ItemController::class,'getAll'])->name('products');
 Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product');
@@ -45,6 +45,14 @@ Route::post('/admin/store/product',[ItemController::class,'store'])->middleware(
 Route::get('/admin/product/edit/{id}',[ItemController::class,'edit'])->middleware(['auth','role:admin'])->name('product.edit');
 Route::put('/admin/product/update/{id}',[ItemController::class,'update'])->middleware(['auth','role:admin'])->name('product.update');
 
+Route::get('/admin/companies',[AdminController::class,'getAllCompanies'])->middleware(['auth','role:admin'])->name('companies.list');
+
 Route::get('/admin/create/company',[CompanyController::class,'create'])->middleware(['auth','role:admin'])->name('company.create');
-Route::post('/admin/stroe/company',[CompanyController::class,'store'])->middleware(['auth','role:admin'])->name('company.store');
+Route::post('/admin/store/company',[CompanyController::class,'store'])->middleware(['auth','role:admin'])->name('company.store');
+
+Route::get('/admin/edit/company/{id}',[CompanyController::class,'edit'])->middleware(['auth','role:admin'])->name('company.edit');
+Route::put('/admin/update/company/{id}',[CompanyController::class,'update'])->middleware(['auth','role:admin'])->name('company.update');
+
+Route::delete('/admin/delete/company/{id}',[CompanyController::class,'destroy'])->middleware(['auth','role:admin'])->name('company.delete');
+
 require __DIR__.'/auth.php';

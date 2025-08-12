@@ -191,12 +191,16 @@
                                             <button class="btn btn-sm btn-outline-primary" style="border-color: var(--primary-color); color: var(--primary-color);">
                                                 <i class="fas fa-eye"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
+                                            <a href="{{route('company.edit',$value->id)}}" class="btn btn-sm btn-outline-secondary">
                                                 <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            </a>
+                                            <form method="POST" action="{{route('company.delete',$value->id)}}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
