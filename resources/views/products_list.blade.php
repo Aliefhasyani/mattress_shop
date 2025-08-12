@@ -355,7 +355,12 @@
 
                                 <div class="d-grid gap-2">
                                     @if($value->quantity_in_stock > 0)
-                                        <a href="#" class="btn btn-buy"><i class="fas fa-shopping-cart me-2"></i> Add to Cart</a>
+                                    <form method="POST" action="{{route('buy',$value->id)}}">
+                                        @csrf    
+                                            <button type="submit" class="btn btn-buy w-100">
+                                                <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                                            </button>   
+                                    </form>
                                     @endif
                                     <a href="{{ route('show.product', $value->id) }}" class="btn btn-details">
                                         <i class="fas fa-info-circle me-2"></i> View Details

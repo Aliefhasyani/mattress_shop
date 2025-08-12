@@ -93,8 +93,21 @@ class ItemController extends Controller
         return redirect()->route('products.list');
 
     }
-       
+     
+    
 
+    public function buy($id){
+        $mattress = Mattress::findOrFail($id);
+        if($mattress->quantity_in_stock >0 ){
+            $mattress->decrement('quantity_in_stock');
+
+        }
+
+        return redirect()->route('products');
+       
+    }
+       
+    
 
 
 }

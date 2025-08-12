@@ -233,7 +233,6 @@
                             @endif
                         </div>
 
-                        <!-- Product Details -->
                         <div class="col-md-6">
                             <div class="product-details-lg">
                                 <div class="d-flex justify-content-between mb-3">
@@ -248,13 +247,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Description -->
                                 <div class="description-box mb-4">
                                     <span class="section-label">Product Description</span>
                                     <p class="mb-0 text-muted">{{ $mattress->desc }}</p>
                                 </div>
 
-                                <!-- Features -->
+                       
                                 <div class="row g-3 mb-4">
                                     <div class="col-4">
                                         <div class="feature-item">
@@ -279,14 +277,17 @@
                                     </div>
                                 </div>
 
-                                <!-- Buttons -->
                                 <div class="d-grid gap-3">
                                     <a href="#" class="btn btn-cta btn-add-to-cart">
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
-                                    <a href="#" class="btn btn-cta btn-buy-now">
-                                        <i class="fas fa-credit-card"></i> Buy Now
-                                    </a>
+                                    <form method="POST" action="{{route('buy',$mattress->id)}}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-buy w-100">
+                                            <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                                        </button>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
