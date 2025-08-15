@@ -278,15 +278,15 @@
                                 </div>
 
                                 <div class="d-grid gap-3">
-                                    <a href="#" class="btn btn-cta btn-add-to-cart">
-                                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                                    </a>
+                                    
+                                 <div class="d-grid gap-3">
                                     <form method="POST" action="{{route('buy',$mattress->id)}}">
                                         @csrf
-                                        <button type="submit" class="btn btn-buy w-100">
+                                        <button type="submit" class="btn btn-cta btn-buy-now w-100">
                                             <i class="fas fa-shopping-cart me-2"></i> Buy Now
                                         </button>
                                     </form>
+                                </div>
                                     
                                 </div>
                             </div>
@@ -298,7 +298,7 @@
     </div>
 </x-app-layout>
 
-<!-- Bootstrap JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

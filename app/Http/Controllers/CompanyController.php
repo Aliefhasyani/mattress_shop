@@ -60,4 +60,11 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.list');
     }
+
+    public function search(Request $request){
+        $query = $request->input('keyword');
+        $companies = Company::where('name', 'like', '%' . $query . '%')->get();
+
+        return view('admin.company_list', compact('companies'));
+    }
 }

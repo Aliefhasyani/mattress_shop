@@ -115,6 +115,42 @@
         color: #fff;
     }
 
+    /* Search Form */
+    .search-container {
+        padding: 1.5rem;
+        background-color: #fff;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .search-form {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .search-input {
+        flex-grow: 1;
+        padding: 0.5rem 1rem;
+        border: 1px solid #e9ecef;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(139, 94, 60, 0.25);
+    }
+    .search-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 0.5rem 1.25rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+    .search-button:hover {
+        background-color: var(--primary-hover);
+    }
 
     .fa-plus,
     .fa-filter,
@@ -142,13 +178,25 @@
                 <a href="{{ route('product.create') }}" class="btn btn-primary px-4 btn-action">
                     <i class="fas fa-plus me-2"></i> Add New Product
                 </a>
-                <button class="btn btn-outline-secondary px-4 btn-action">
-                    <i class="fas fa-filter me-2"></i> Filter
-                </button>
             </div>
         </div>
 
         <div class="table-card card">
+          
+            <div class="search-container">
+                <form method="GET" action="{{route('products.search')}}" class="search-form">
+                    <input type="text" 
+                           name="keyword" 
+                           class="search-input" 
+                           placeholder="Search by product name or description..." 
+                           value="{{ request('keyword') }}"
+                           aria-label="Search products">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search me-1"></i> Search
+                    </button>
+                </form>
+            </div>
+            
             <div class="card-body p-0">
                 <div class="table-responsive">
                     @if($mattress->isEmpty())
@@ -243,6 +291,3 @@
         </div>
     </div>
 </x-app-layout>
-                                                  
-
-                                         

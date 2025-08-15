@@ -323,7 +323,7 @@
                     </p>
                     <div class="d-flex justify-content-center">
                         <a href="{{route("products")}}" class="btn btn-primary">Discover the Collection</a>
-                        <a href="#" class="btn btn-outline">Our Story</a>
+                        <a href="{{route('about')}}" class="btn btn-outline">About</a>
                     </div>
                 </div>
             </div>
@@ -448,12 +448,12 @@
                 <div class="col-lg-3 mb-4">
                     <h5 class="footer-title">MattShop</h5>
                     <p>Experience the art of living with our curated selection of premium goods.</p>
-                    <div class="social-icons mt-3">
+                    {{-- <div class="social-icons mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-3 mb-4">
                     <h5 class="footer-title">Shop</h5>

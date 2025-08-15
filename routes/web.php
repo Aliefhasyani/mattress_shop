@@ -29,6 +29,7 @@ Route::get('/dashboard/admin',[AdminController::class,'index'])->middleware(['au
 
 
 Route::get('/admin/products',[AdminController::class,'getAllProducts'])->middleware(['auth','role:admin'])->name('products.list');
+Route::get('/admin/products/product',[AdminController::class,'search'])->middleware(['auth','role:admin'])->name('products.search');
 Route::get('/admin/products/show/{id}',[AdminController::class,'show'])->middleware(['auth','role:admin'])->name('admin.product');
 Route::delete('/admin/products/delete/{id}',[ItemController::class,'destroy'])->middleware(['auth','role:admin'])->name('delete.product');
 
@@ -47,7 +48,7 @@ Route::get('/admin/product/edit/{id}',[ItemController::class,'edit'])->middlewar
 Route::put('/admin/product/update/{id}',[ItemController::class,'update'])->middleware(['auth','role:admin'])->name('product.update');
 
 Route::get('/admin/companies',[AdminController::class,'getAllCompanies'])->middleware(['auth','role:admin'])->name('companies.list');
-
+Route::get('/admin/companies/company',[CompanyController::class,'search'])->middleware(['auth','role:admin'])->name('company.search');
 Route::get('/admin/create/company',[CompanyController::class,'create'])->middleware(['auth','role:admin'])->name('company.create');
 Route::post('/admin/store/company',[CompanyController::class,'store'])->middleware(['auth','role:admin'])->name('company.store');
 
@@ -56,7 +57,7 @@ Route::put('/admin/update/company/{id}',[CompanyController::class,'update'])->mi
 
 Route::post('/product/buy/{id}',[ItemController::class,'buy'])->middleware(['auth'])->name('buy');
 
-
+Route::get('/about',[AdminController::class,'about'])->name('about');
 
 Route::delete('/admin/delete/company/{id}',[CompanyController::class,'destroy'])->middleware(['auth','role:admin'])->name('company.delete');
 

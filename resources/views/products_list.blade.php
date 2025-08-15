@@ -294,11 +294,11 @@
         <p class="hero-subtitle">
             Experience unparalleled comfort with our handcrafted mattresses, designed for the perfect night's sleep
         </p>
-        <div class="d-flex justify-content-center flex-wrap gap-3">
+        {{-- <div class="d-flex justify-content-center flex-wrap gap-3">
             <button class="btn filter-btn"><i class="fas fa-crown me-2"></i> Premium Collection</button>
             <button class="btn filter-btn"><i class="fas fa-filter me-2"></i> Filter Options</button>
             <button class="btn filter-btn"><i class="fas fa-star me-2"></i> Top Rated</button>
-        </div>
+        </div> --}}
     </div>
 
     <div class="section-header">

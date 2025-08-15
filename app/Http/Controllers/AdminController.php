@@ -32,4 +32,16 @@ class AdminController extends Controller
 
         return view('admin.company_list',compact('companies'));
     }
+
+    public function about(){
+        return view('about');
+    }
+
+    public function search(Request $request){
+        $query = $request->input('keyword');
+        $mattress = Mattress::where('name', 'like', '%' . $query . '%')->get();
+
+        return view('admin.products_list', compact('mattress'));
+    }
+
 }

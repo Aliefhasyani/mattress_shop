@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img src="{{ asset('storage/mattresses/download (1).png') }}" class="h-9 w-auto fill-current text-gray-800" alt="Mattress Image" />
                     </a>
                 </div>
 
@@ -25,9 +25,15 @@
                         </x-nav-link>
                     </div> --}}
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Admin Dashboard (ADMIN)') }}
+                        </x-nav-link>
+                    </div> --}}
+
+                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            {{ __('Home') }}
                         </x-nav-link>
                     </div>
                     
@@ -37,9 +43,11 @@
                         </x-nav-link>
                     </div>
 
+                   
+                    
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Home') }}
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
                         </x-nav-link>
                     </div>
                     
@@ -58,6 +66,11 @@
                             {{ __('Products') }}
                         </x-nav-link>
                     </div>
+                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
+                        </x-nav-link>
+                    </div>
 
                     
                 
@@ -73,6 +86,11 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
                             {{ __('Products') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
                         </x-nav-link>
                     </div>
                   
@@ -101,7 +119,25 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        @if(Auth::check())
+                        @if(Auth::check() && Auth::user()->role === 'admin')
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('admin.dashboard')">
+                            {{ __('Admin Dashboard') }}
+                        </x-dropdown-link>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                        @elseif(Auth::check())
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -174,6 +210,8 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                
+            
             </div>
         </div>
     </div>
