@@ -1,3 +1,5 @@
+Please visit this project here : https://mediumpurple-shark-871727.hostingersite.com/public/
+
 Mattress Shop E-Commerce Application
 
 A Laravel-based e-commerce platform designed specifically for selling mattresses online. Includes admin functionality for managing products, companies, and orders.
