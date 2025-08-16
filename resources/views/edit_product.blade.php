@@ -93,7 +93,7 @@
                     <div class="mb-3">
                         <label for="image_path" class="form-label">Product Image</label>
                         <input id="image_path" name="image_path" type="file" class="form-control" >
-                        <small class="form-text text-muted">You can leave this field empty if no image is available.</small>
+                        <small class="form-text text-muted">Leave empty to keep old image.</small>
                     </div>
 
                     <div class="mb-3">

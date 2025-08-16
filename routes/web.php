@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ItemController::class,'home'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,6 +35,7 @@ Route::delete('/admin/products/delete/{id}',[ItemController::class,'destroy'])->
 
 
 Route::get('/products',[ItemController::class,'getAll'])->name('products');
+Route::get('/products/search',[ItemController::class,'search'])->name('search.main');
 Route::get('/products/{id}',[ItemController::class,'show'])->name('show.product');
 
 Route::get('/about',function(){
@@ -56,6 +57,9 @@ Route::get('/admin/edit/company/{id}',[CompanyController::class,'edit'])->middle
 Route::put('/admin/update/company/{id}',[CompanyController::class,'update'])->middleware(['auth','role:admin'])->name('company.update');
 
 Route::post('/product/buy/{id}',[ItemController::class,'buy'])->middleware(['auth'])->name('buy');
+
+Route::get('/product/payment/{id}',[ItemController::class,'payment'])->middleware(['auth'])->name('product.payment');
+Route::get('/product/payment/{id}/buy',[ItemController::class,'payment'])->middleware(['auth'])->name('product.buy');
 
 Route::get('/about',[AdminController::class,'about'])->name('about');
 

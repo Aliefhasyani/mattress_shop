@@ -106,6 +106,26 @@ class ItemController extends Controller
         return redirect()->route('products');
        
     }
+
+    public function search(Request $request){
+        $query = $request->input('keyword');
+
+        $mattress = Mattress::where('name' , 'like' , '%' . $query . '%')->get();
+
+        return view('products_list',compact('mattress'));
+    }
+
+    public function payment($id){
+
+        $mattress = Mattress::findOrFail($id);
+        if($mattress->quantity_in_stock >0 ){
+            $mattress->decrement('quantity_in_stock');
+
+        }
+
+       
+        return view('payment',compact('mattress'));
+    }
        
     
 

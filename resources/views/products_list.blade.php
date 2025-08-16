@@ -284,6 +284,44 @@
             font-size: 0.8rem;
             z-index: 1;
         }
+
+   
+        .search-form {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .search-input {
+            height: 50px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+            padding: 0 1.5rem;
+            font-size: 1rem;
+            color: var(--dark-text);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(84, 56, 39, 0.25);
+        }
+
+        .search-btn {
+            height: 50px;
+            border-radius: 0 8px 8px 0;
+            padding: 0 2rem;
+            font-weight: 600;
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: var(--gold-dark);
+            border-color: var(--gold-dark);
+        }
     </style>
 </head>
 
@@ -304,6 +342,21 @@
     <div class="section-header">
         <h2 class="section-title">Our Signature Collection</h2>
         <p class="section-subtitle">Each mattress is crafted with premium materials and innovative technology for optimal comfort and support</p>
+    </div>
+    <div class="mb-5">
+        <form action="{{route('search.main')}}" method="GET" class="search-form"> 
+            <div class="input-group">
+                <input name="keyword" 
+                    id="keyword" 
+                    class="form-control search-input" 
+                    placeholder="Search by mattress name or description..." 
+                    value="{{request('keyword')}}"
+                    aria-label="Search mattresses">
+                <button type="submit" class="btn btn-primary search-btn">
+                    <i class="fas fa-search me-2"></i> Search
+                </button>
+            </div>
+        </form>
     </div>
 
     @if($mattress && $mattress->isEmpty())
@@ -355,12 +408,12 @@
 
                                 <div class="d-grid gap-2">
                                     @if($value->quantity_in_stock > 0)
-                                    <form method="POST" action="{{route('buy',$value->id)}}">
-                                        @csrf    
-                                            <button type="submit" class="btn btn-buy w-100">
+                                    
+
+                                            <a href="{{route('product.payment',$value->id)}}" class="btn btn-buy w-100">
                                                 <i class="fas fa-shopping-cart me-2"></i> Buy Now
-                                            </button>   
-                                    </form>
+                                            </a>   
+                                    
                                     @endif
                                     <a href="{{ route('show.product', $value->id) }}" class="btn btn-details">
                                         <i class="fas fa-info-circle me-2"></i> View Details

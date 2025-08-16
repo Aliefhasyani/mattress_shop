@@ -167,7 +167,7 @@
         </div>
 
         <div class="company-table-card">
-            <!-- Search Form at the top of the table -->
+         
             <div class="search-container">
                 <form method="GET" action="{{route('company.search')}}" class="search-form">
                     <input type="text" 
@@ -241,9 +241,7 @@
                                     </td>
                                     <td class="text-end pe-4 table-actions">
                                         <div class="btn-group" role="group">
-                                            <button class="btn btn-sm btn-outline-primary" style="border-color: var(--primary-color); color: var(--primary-color);">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
+                                            
                                             <a href="{{route('company.edit',$value->id)}}" class="btn btn-sm btn-outline-secondary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
