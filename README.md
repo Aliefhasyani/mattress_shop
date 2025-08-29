@@ -1,153 +1,154 @@
-Please visit this project here : https://mediumpurple-shark-871727.hostingersite.com/public/
+Here’s a polished, professional-looking **GitHub README** for your Mattress Shop E-Commerce project. I’ve restructured it for readability, added formatting, badges, code blocks, and improved flow so it feels like a modern open-source README.
 
-Mattress Shop E-Commerce Application
+---
 
-A Laravel-based e-commerce platform designed specifically for selling mattresses online. Includes admin functionality for managing products, companies, and orders.
+# 🛏️ Mattress Shop E-Commerce
 
-Table of Contents
+*A Laravel-based e-commerce platform for selling mattresses online*
 
-Features
+[![Laravel](https://img.shields.io/badge/Laravel-10.x-FF2D20?style=flat-square\&logo=laravel\&logoColor=white)](https://laravel.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=flat-square\&logo=mysql\&logoColor=white)](https://www.mysql.com/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=flat-square\&logo=tailwind-css\&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/license-Private-lightgrey?style=flat-square)](#license)
 
-Admin Credentials
+👉 **Live Demo**: [alief.online](https://alief.online)
 
-Installation
+---
 
-Database Setup
+## 📋 Table of Contents
 
-Running the Application
+* [✨ Features](#-features)
+* [🔑 Admin Credentials](#-admin-credentials)
+* [⚙️ Installation](#️-installation)
+* [🗄 Database Setup](#-database-setup)
+* [🚀 Running the Application](#-running-the-application)
+* [🌱 Seeding the Database](#-seeding-the-database)
+* [🛠 Technologies Used](#-technologies-used)
+* [📂 Folder Structure](#-folder-structure)
+* [📜 License](#-license)
 
-Seeding the Database
+---
 
-Technologies Used
+## ✨ Features
 
-Folder Structure
+* 🛠 **Admin Panel** to manage:
 
-License
+  * Mattresses (add, edit, delete)
+  * Companies
+  * Orders
+* 🛒 **Product Catalog** with images, description, price, and stock quantity
+* 🌱 **Database Seeding** for quick setup
+* 📱 **Responsive Front-End** (Laravel + Vite + Tailwind CSS)
 
-Features
+---
 
-Admin panel to manage:
+## 🔑 Admin Credentials
 
-Mattresses (add, edit, delete)
+Use the following account to log in as an administrator:
 
-Companies
+```
+Name: Seller  
+Email: seller@gmail.com  
+Password: seller123  
+```
 
-Orders
+---
 
-Product catalog with images, description, price, and stock quantity
+## ⚙️ Installation
 
-Database seeding for initial setup
+1. **Clone the repository**
 
-Responsive front-end using Laravel + Vite
+   ```bash
+   git clone
+   cd mattress_shop
+   ```
 
-Admin Credentials
+2. **Install dependencies**
 
-Use the following credentials to log in as an administrator:
+   ```bash
+   composer install
+   npm install
+   ```
 
-Name:Seller
+3. **Build front-end assets**
 
-Email: seller@gmail.com
+   ```bash
+   npm run build
+   ```
 
-Password:seller123
+4. **Configure environment**
 
-Installation
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Clone this repository:
+---
 
-git clone <repository-url>
-cd mattress_shop
+## 🗄 Database Setup
 
+1. Create a MySQL database (e.g., `mattress_shop`).
 
-Install PHP dependencies:
+2. Update your `.env` file:
 
-composer install
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=mattress_shop
+   DB_USERNAME=your_db_user
+   DB_PASSWORD=your_db_password
+   ```
 
+3. Run migrations:
 
-Install Node dependencies:
+   ```bash
+   php artisan migrate
+   ```
 
-npm install
+---
 
+## 🌱 Seeding the Database
 
-Build front-end assets:
+This project comes with seeders to pre-populate the database:
 
-npm run build
+* **MoreCompanySeeder** → adds initial companies
+* **MattressSeeder** → adds mattresses linked to companies
+* **UserSeeder** → adds the default admin account
 
+Run all seeders:
 
-Copy the .env.example to .env and configure your database and other settings:
-
-cp .env.example .env
-php artisan key:generate
-
-Database Setup
-
-Create a MySQL database (e.g., mattress_shop)
-
-Update .env with your database credentials:
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=mattress_shop
-DB_USERNAME=your_db_user
-DB_PASSWORD=your_db_password
-
-
-Run migrations:
-
-php artisan migrate
-
-
-Seed the database (adds companies, mattresses, and admin account):
-
+```bash
 php artisan db:seed
+```
 
-Running the Application
+---
 
-Start Laravel’s development server:
+## 🚀 Running the Application
 
+Start the Laravel development server:
+
+```bash
 php artisan serve
+```
+
+Then visit: **[http://localhost:8000](http://localhost:8000)**
+
+---
+
+## 🛠 Technologies Used
+
+* **Backend**: Laravel 10
+* **Frontend**: Vite, Tailwind CSS, Blade Templates
+* **Database**: MySQL
+* **Others**: Composer, Node.js, NPM
+
+---
 
 
-Visit http://localhost:8000 in your browser.
 
-Seeding the Database
 
-This project includes seeders to populate the database with initial data:
 
-MoreCompany → adds initial companies
 
-MattressSeeder → adds mattresses associated with companies
 
-Admin account is included in the user seeder
-
-Run all seeders with:
-
-php artisan db:seed
-
-Technologies Used
-
-Backend: Laravel 10
-
-Frontend: Vite, Tailwind CSS, Blade Templates
-
-Database: MySQL
-
-Others: Composer, Node.js, NPM
-
-Folder Structure (Key Directories)
-
-app/Models → Eloquent models
-
-database/migrations → Database migrations
-
-database/seeders → Seeders for initial data
-
-resources/views → Blade templates (frontend)
-
-public/ → Compiled front-end assets
-
-routes/web.php → Web routes
-
-License
-
-This project is for educational and personal use. All rights reserved by Mohammad Alief Hasyani.
+Would you like me to **add a screenshots/demo section with placeholders** so you can later drop images of your app?
