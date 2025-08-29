@@ -1,4 +1,4 @@
-Here’s a polished, professional-looking **GitHub README** for your Mattress Shop E-Commerce project. I’ve restructured it for readability, added formatting, badges, code blocks, and improved flow so it feels like a modern open-source README.
+
 
 ---
 
