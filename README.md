@@ -151,4 +151,4 @@ Then visit: **[http://localhost:8000](http://localhost:8000)**
 
 
 
-Would you like me to **add a screenshots/demo section with placeholders** so you can later drop images of your app?
+
