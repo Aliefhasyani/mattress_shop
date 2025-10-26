@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         }elseif($request->user()->role == 'seller'){
             $url = 'home';
         }else{
-            $url = 'dashboard';
+            $url = 'home';
         }
 
         return redirect()->route($url);

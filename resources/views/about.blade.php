@@ -34,7 +34,18 @@
                         </div>
                         
                         <p class="text-center mt-4 mb-0" style="color: #5d4037;">
-                            Thanks again for checking it out!(login for admin is, email:)
+                            Thanks again for checking it out!
+                            <li>
+                                Login Admin/Seller:
+                                <ul>
+                                    <li>
+                                        email:seller@gmail.com
+                                    </li>
+                                    <li>
+                                        password:seller123
+                                    </li>
+                                </ul>
+                            </li>
                             
                         </p>
                     </div>
